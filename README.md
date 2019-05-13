@@ -4,11 +4,11 @@ This repository will contain
 
 1. 'README.md' This file provides info on the data set
 2. 'run_analysis.R' This is the R script that was used to create the independent data set with the following steps 
-   -Merges the training and the test sets to create one data set.
-   -Extracts only the measurements on the mean and standard deviation for each measurement.
-   -Uses descriptive activity names to name the activities in the data set
-   -Appropriately labels the data set with descriptive variable names.
-   -From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+    -Merges the training and the test sets to create one data set.
+    -Extracts only the measurements on the mean and standard deviation for each measurement.
+    -Uses descriptive activity names to name the activities in the data set
+    -Appropriately labels the data set with descriptive variable names.
+    -From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 3. 'Codebook.md' this file explains the variables and contents of the dataset
 4. 'CompleteDataSet.txt' This contains the dataset requested in the question
 
