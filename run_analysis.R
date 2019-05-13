@@ -1,6 +1,5 @@
 
 ##load dplyr package
-
 library(dplyr)
 
 ##check if dataset exists, and if not download it
@@ -18,7 +17,6 @@ if(!file.exists(fileLocation)) {
 }
 
 ##read data and save them as objects
-
 features<- read.table(file.path(fileLocation, "features.txt"), as.is = TRUE)
 
 activity<- read.table(file.path(fileLocation, "activity_labels.txt"),
@@ -39,25 +37,20 @@ trainData<- read.table(file.path(fileLocation, "train", "X_train.txt"),
                        col.names = features$V2)
 
 ## Merge train and test data sets together
-
 datasets<- rbind(trainData,testData)
 activitysets<- rbind(trainActivity,testActivity)
 subjectSets<- rbind(trainsubjects, testsubjects)
 mergedData<- cbind(subjectSets, activitysets,datasets)
 
 ## isolate only the variables that contrain mean or standard deviation measurements
-
 selectedData<- mergedData %>% select(subjectId, activityId, contains("mean"), contains("Std"))
 
 ## use names to describe the activity
-
 selectedData$activityId<- activity[selectedData$activityId, 2]
 
 ##label the variables with descriptive labels by replacing the coded variables
-
 selectedDataCols<- colnames(selectedData)
 
-selectedDataCols<- selectedDataCols 
 
 selectedDataCols<- gsub("gravity", "Gravity", selectedDataCols)
 selectedDataCols<- gsub("angle", "Angle", selectedDataCols)
@@ -74,7 +67,6 @@ selectedDataCols<- gsub("-freq()", "Frequency", selectedDataCols, ignore.case = 
 colnames(selectedData)<- selectedDataCols
 
 ## create second independent data set with the average of each variable
-
 CompleteDataSet<- selectedData %>%
   group_by(subjectId, activityId) %>%
   summarise_all(mean)
